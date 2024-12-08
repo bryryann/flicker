@@ -6,6 +6,13 @@ const selectAll = async (_req: Request, res: Response) => {
     res.status(200).json(query);
 };
 
+const findUser = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const query = await usersQuery.find({ id });
+    res.status(200).json(query);
+}
+
 export default {
-    selectAll
+    selectAll,
+    findUser
 } satisfies Record<string, Function>;
