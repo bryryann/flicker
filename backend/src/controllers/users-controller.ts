@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import client from "../db/client";
+import { usersQuery } from "../db/query";
 
 const selectAll = async (_req: Request, res: Response) => {
-    const query = await client.query("SELECT * FROM users");
-    res.status(200).json(query.rows);
+    const query = await usersQuery.all();
+    res.status(200).json(query);
 };
 
 export default {
