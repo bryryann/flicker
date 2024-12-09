@@ -2,6 +2,9 @@
 logs
 *.log
 
+# Certificates for running https in development
+cert/
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
