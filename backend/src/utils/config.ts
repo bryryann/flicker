@@ -22,5 +22,6 @@ const pgConfig: PoolConfig = {
 
 export default {
     PORT: process.env.PORT,
+    SALT: process.env.SALT,
     pgConfig
 } satisfies Config;

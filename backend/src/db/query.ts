@@ -3,6 +3,12 @@ import { QueryResult } from "pg";
 
 type TargetType = Record<string, string>;
 
+interface UserToCreate {
+    username: string;
+    passwordHash: string;
+    email: string;
+};
+
 class Query {
     private db: string;
 
@@ -22,9 +28,14 @@ class Query {
         const res: QueryResult =
             await client.query(`SELECT ${columns} from ${this.db} WHERE ${key} = $1`, [target[key]]);
 
-        return res.rows.length < 1
-            ? { error: "User not found" }
-            : res.rows.shift();
+        return res.rows.shift();
+    }
+
+    async create(user: UserToCreate): Promise<void> {
+        await client.query(
+            `INSERT INTO ${this.db} (username, password_hash, email) VALUES ($1, $2, $3);`,
+            [user.username, user.passwordHash, user.email]
+        );
     }
 }
 

@@ -12,7 +12,9 @@ const options = {
 };
 const app = express();
 
-app.use(cors());
+app.use(cors({
+    credentials: true,
+}));
 app.use(express.json());
 
 app.get("/", (_req: Request, res: Response) => { res.json({ version: '0.0.1' }) });
