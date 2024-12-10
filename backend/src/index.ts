@@ -1,3 +1,6 @@
+import https from "https";
+import fs from "fs";
+import path from "path";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import config from "./utils/config";
@@ -10,6 +13,11 @@ app.use(cors());
 
 app.get("/", (_req: Request, res: Response) => { res.json({ "version": "0.0.1" }) });
 
-app.listen(config.PORT, () => {
+const ssl = {
+    key: fs.readFileSync(path.join(__dirname, config.SSL.keyPath)),
+    cert: fs.readFileSync(path.join(__dirname, config.SSL.certPath)),
+};
+
+https.createServer(ssl, app).listen(config.PORT, () => {
     console.log(`server listening on port ${config.PORT}`);
 });
