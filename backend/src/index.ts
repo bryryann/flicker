@@ -4,6 +4,7 @@ import path from "path";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import config from "./utils/config";
+import usersRouter from "./routers/users-router";
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/", (_req: Request, res: Response) => { res.json({ "version": "0.0.1" }) });
+
+app.use("/users", usersRouter);
 
 const ssl = {
     key: fs.readFileSync(path.join(__dirname, config.SSL.keyPath)),
