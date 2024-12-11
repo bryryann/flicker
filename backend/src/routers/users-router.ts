@@ -5,5 +5,6 @@ const router: Router = Router();
 
 router.get("/", controller.getAll);
 router.get("/:id", controller.findById);
+router.get("/:username", controller.findByUsername);
 
 export default router;
