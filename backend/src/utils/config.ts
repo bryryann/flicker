@@ -17,6 +17,7 @@ interface DBConnectionConfig {
 
 interface AppConfiguration {
     PORT: EnvVariable;
+    SALT: number;
     SSL: SSLConfig;
     DBConnection: DBConnectionConfig;
 }
@@ -25,6 +26,7 @@ const dbConnectionJson: DBConnectionConfig = JSON.parse(process.env.DB_CONNECTIO
 
 export default {
     PORT: process.env.PORT,
+    SALT: Number(process.env.SALT),
     SSL: {
         keyPath: process.env.SSL_KEY!,
         certPath: process.env.SSL_CERT!,

@@ -1,6 +1,15 @@
 import { QueryResultRow } from "pg";
 import client from "./client";
 
+/* helper function */
+function getConditions(keys: string[]): string {
+    for (let i = 0; i < keys.length; i++) {
+        keys[i] = `${keys[i]} = $${i + 1}`;
+    }
+    return keys.join(" AND ");
+}
+/** */
+
 type ConditionArray = Record<string, string>;
 
 class Query {
@@ -24,14 +33,19 @@ class Query {
         );
         return query.rows;
     }
-}
 
-// Helper function -> Turns array of strings in a SQL conditional string
-function getConditions(keys: string[]): string {
-    for (let i = 0; i < keys.length; i++) {
-        keys[i] = `${keys[i]} = $${i + 1}`;
+    async new(fields: Record<string, string>): Promise<void> {
+        const keys = Object.keys(fields);
+        const vals = Object.values(fields);
+        for (let i = 0; i < vals.length; i++) {
+            vals[i] = `$${i + 1}`;
+        }
+
+        await client.query(
+            `INSERT INTO ${this.db} (${keys.join(", ")}) VALUES (${vals.join(", ")})`,
+            Object.values(fields)
+        );
     }
-    return keys.join(" AND ");
 }
 
 export const users = new Query("users");
