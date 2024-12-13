@@ -3,9 +3,9 @@ import "./style.css";
 
 type BtnVariants = "default" | "danger";
 
-interface BtnProps {
+interface BtnProps extends React.PropsWithChildren {
     variant: BtnVariants;
-    content: string;
+    children: string;
     onClick?: (e?: React.SyntheticEvent) => void;
 };
 
@@ -14,7 +14,7 @@ const Button: React.FC<BtnProps> = (props) => (
         className={`btn btn-${props.variant}`}
         onClick={props.onClick}
     >
-        {props.content}
+        {props.children}
     </button>
 );
 
