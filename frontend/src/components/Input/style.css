@@ -1,0 +1,45 @@
+@import "../../global.css";
+
+.input-container {
+    color: rgba(0, 0, 0, .7);
+    font-size: .9rem;
+}
+
+.input-container input {
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: white;
+    padding: 5px 7px;
+    vertical-align: middle;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+}
+
+.input-outlined input {
+    border: 2px solid rgba(0, 0, 0, .1);
+    border-radius: 5px;
+}
+
+.input-outlined input::selection {
+    background-color: var(--primary-accent);
+    color: white;
+}
+
+.input-outlined input:active,
+.input-outlined input:focus {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-accent);
+}
+
+.input-underlined {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-underlined input {
+    padding: 5px 7px 2px 0;
+    border-bottom: 1px solid black;
+    width: 80%;
+}

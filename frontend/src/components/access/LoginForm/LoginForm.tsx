@@ -24,7 +24,6 @@ const LoginForm: React.FC = () => {
     return (
         <form onSubmit={onSubmit}>
             <Input
-                variant="outlined"
                 type={username.type}
                 placeholder="Username"
                 label="Username"
@@ -34,7 +33,6 @@ const LoginForm: React.FC = () => {
             />
 
             <Input
-                variant="outlined"
                 type={email.type}
                 placeholder="Email"
                 label="Email"
@@ -44,7 +42,6 @@ const LoginForm: React.FC = () => {
             />
 
             <Input
-                variant="outlined"
                 type={password.type}
                 placeholder="Password"
                 label="Password"
@@ -54,7 +51,6 @@ const LoginForm: React.FC = () => {
             />
 
             <Input
-                variant="outlined"
                 type={confirmPwd.type}
                 placeholder="Confirm Password"
                 label="Confirm Password"

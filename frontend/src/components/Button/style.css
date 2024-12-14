@@ -1,0 +1,47 @@
+@import "../../global.css";
+
+.btn {
+    border-width: 1px;
+    border-radius: 3px;
+    font-weight: bold;
+    padding: 5px 22px;
+    min-width: 110px;
+    cursor: pointer;
+    transition: 200ms ease-in-out;
+}
+
+.btn-default {
+    border-color: var(--primary-accent);
+    background-color: var(--primary-accent);
+    opacity: .9;
+    color: white;
+}
+
+.btn-default:hover {
+    opacity: 1;
+}
+
+.btn-reverse {
+    border-width: 2px;
+    border-color: var(--primary-accent);
+    background-color: white;
+    color: var(--primary-accent);
+}
+
+.btn-reverse:hover {
+    background-color: var(--primary-accent);
+    color: white;
+}
+
+.btn-borderless {
+    display: inline-block;
+    border: none;
+    min-width: fit-content;
+    padding: 0;
+    background-color: transparent;
+    color: var(--primary-accent);
+}
+
+.btn-borderless:hover {
+    text-decoration: underline;
+}

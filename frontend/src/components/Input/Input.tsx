@@ -24,7 +24,7 @@ const Input: React.FC<InputProps> = ({
     value,
     setValue
 }) => (
-    <div className={`input input-${variant}`}>
+    <div className={`input-container input-${variant}`}>
         <label htmlFor={name}>{label}</label>
         <input
             type={type}

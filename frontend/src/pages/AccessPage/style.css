@@ -1,0 +1,45 @@
+@import "../../global.css";
+
+body {
+    background-color: var(--primary-color);
+}
+
+.container {
+    display: flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-height: 430px;
+    height: 70vh;
+}
+
+.form-container .header {
+    text-align: center;
+    color: var(--primary-accent);
+}
+
+.form-container .paragraph {
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(0, 0, 0, .8);
+}
+
+.image-container {
+    background-color: var(--primary-accent);
+    width: 25vw;
+}
+
+.form-container {
+    background-color: white;
+    padding: 25px 30px;
+    width: 30vw;
+}
+
+.toggle-container {
+    position: absolute;
+    bottom: 20px;
+    left: auto;
+    right: auto;
+    text-align: center;
+}
