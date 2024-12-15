@@ -19,6 +19,8 @@ interface AppConfiguration {
     PORT: EnvVariable;
     SALT: number;
     SSL: SSLConfig;
+    JWT: EnvVariable;
+    CLIENT_URI: EnvVariable;
     DBConnection: DBConnectionConfig;
 }
 
@@ -31,6 +33,8 @@ export default {
         keyPath: process.env.SSL_KEY!,
         certPath: process.env.SSL_CERT!,
     },
+    JWT: process.env.JWT,
+    CLIENT_URI: process.env.CLIENT_URI,
     DBConnection: {
         user: dbConnectionJson.user,
         database: dbConnectionJson.database,

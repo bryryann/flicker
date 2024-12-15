@@ -3,18 +3,25 @@ import fs from "fs";
 import path from "path";
 import express, { Request, Response } from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import config from "./utils/config";
 import usersRouter from "./routers/users-router";
+import authRouter from "./routers/auth-router";
 
 const app = express();
 
 /* Middlewares */
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: config.CLIENT_URI,
+    credentials: true,
+}));
+app.use(cookieParser());
 
 app.get("/", (_req: Request, res: Response) => { res.json({ "version": "0.0.1" }) });
 
 app.use("/users", usersRouter);
+app.use("/auth", authRouter);
 
 const ssl = {
     key: fs.readFileSync(path.join(__dirname, config.SSL.keyPath)),

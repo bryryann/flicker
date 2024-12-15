@@ -34,12 +34,9 @@ const createUser = async (req: Request, res: Response): Promise<any> => {
     if (!username || !email || !password)
         return res.status(400).json({ error: "Missing username/email/password" });
 
-    // validate username and email
-    const userExists = await users.find({ username });
-    const emailExists = await users.find({ email });
-    if (userExists.length > 0)
+    if (await users.exists({ username }))
         return res.status(400).json({ error: "User already taken" });
-    if (emailExists.length > 0)
+    if (await users.exists({ email }))
         return res.status(400).json({ error: "Email already registered" });
 
     const passwordHash = await bcrypt.hash(password, config.SALT);

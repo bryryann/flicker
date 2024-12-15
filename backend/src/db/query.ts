@@ -46,6 +46,11 @@ class Query {
             Object.values(fields)
         );
     }
+
+    async exists(condition: ConditionArray) {
+        const query = await this.find(condition);
+        return query.length > 0;
+    }
 }
 
 export const users = new Query("users");
