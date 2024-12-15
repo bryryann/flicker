@@ -24,7 +24,7 @@
 .btn-reverse {
     border-width: 2px;
     border-color: var(--primary-accent);
-    background-color: white;
+    background-color: var(--background-color);
     color: var(--primary-accent);
 }
 

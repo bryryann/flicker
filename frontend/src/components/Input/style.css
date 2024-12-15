@@ -5,10 +5,16 @@
     font-size: .9rem;
 }
 
+.input-container label {
+    color: rgba(255, 255, 255, .8);
+    margin-bottom: 4px;
+}
+
 .input-container input {
+    color: white;
     width: 100%;
     margin-bottom: 15px;
-    background-color: white;
+    background-color: transparent;
     padding: 5px 7px;
     vertical-align: middle;
     font-size: 1rem;
@@ -17,7 +23,7 @@
 }
 
 .input-outlined input {
-    border: 2px solid rgba(0, 0, 0, .1);
+    border: 2px solid rgba(255, 255, 255, .1);
     border-radius: 5px;
 }
 
@@ -29,7 +35,8 @@
 .input-outlined input:active,
 .input-outlined input:focus {
     border: 2px solid var(--primary-color);
-    color: var(--primary-accent);
+    color: white;
+    background-color: #ad4ce430;
 }
 
 .input-underlined {

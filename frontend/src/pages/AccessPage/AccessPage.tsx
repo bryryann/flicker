@@ -33,8 +33,10 @@ const AccessPage: React.FC = () => {
       <div className="image-container">
       </div>
       <div className="form-container">
-        <h2 className="header">{headerContent}</h2>
-        <p className="paragraph">{headerParagraph}</p>
+        <div className="form-header">
+          <h2 className="header">{headerContent}</h2>
+          <p className="paragraph">{headerParagraph}</p>
+        </div>
         {content}
         <div className="toggle-container">
           {toggleContent}

@@ -1,7 +1,7 @@
 @import "../../global.css";
 
 body {
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
 }
 
 .container {
@@ -12,6 +12,7 @@ body {
     transform: translate(-50%, -50%);
     min-height: 430px;
     height: 70vh;
+    box-shadow: 0 0 9px 4px rgba(0, 0, 0, .5);
 }
 
 .form-container .header {
@@ -22,7 +23,7 @@ body {
 .form-container .paragraph {
     text-align: center;
     font-size: 0.9rem;
-    color: rgba(0, 0, 0, .8);
+    color: rgba(255, 255, 255, .8);
 }
 
 .image-container {
@@ -31,15 +32,20 @@ body {
 }
 
 .form-container {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--background-color);
     padding: 25px 30px;
     width: 30vw;
 }
 
 .toggle-container {
+    /*
     position: absolute;
     bottom: 20px;
     left: auto;
     right: auto;
+    */
     text-align: center;
 }
