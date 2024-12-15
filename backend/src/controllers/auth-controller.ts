@@ -42,7 +42,7 @@ const authenticate = async (req: Request, res: Response): Promise<any> => {
         sameSite: "strict",
         maxAge: 1000 * 60 * 60 * 2
     });
-    res.status(200).json({ token, user: username.user });
+    res.status(200).json({ token, user: username.user, isSigned: true });
 }
 
 export default {

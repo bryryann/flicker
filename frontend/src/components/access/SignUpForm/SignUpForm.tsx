@@ -2,6 +2,7 @@ import React from "react";
 import useField from "../../../hooks/useField";
 import Button from "../../Button";
 import Input from "../../Input";
+import { createUser, SignUpUser } from "../../../services/users-service";
 import "./style.css";
 
 const SignUpForm: React.FC = () => {
@@ -10,15 +11,29 @@ const SignUpForm: React.FC = () => {
     const password = useField("password");
     const confirmPwd = useField("password");
 
-    const onSubmit = (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        /*
-         * Not implemented yet.
-         * */
+    // helper function
+    const resetAll = () => {
         username.onReset();
-        email.onReset()
+        email.onReset();
         password.onReset();
         confirmPwd.onReset();
+    };
+
+    const onSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+        if (password.value !== confirmPwd.value) {
+            console.log("passwords don't match");
+            resetAll();
+            return;
+        }
+
+        const params = {
+            username: username.value,
+            email: email.value,
+            password: password.value
+        };
+        createAsync(params);
+        resetAll();
     }
 
     return (
@@ -64,5 +79,11 @@ const SignUpForm: React.FC = () => {
         </form>
     );
 };
+
+/* *** helper functions *** */
+const createAsync = async (params: SignUpUser) => {
+    const res = await createUser(params)
+    console.log(res);
+}
 
 export default SignUpForm;
