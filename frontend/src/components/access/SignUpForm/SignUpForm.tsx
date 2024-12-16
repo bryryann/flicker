@@ -21,18 +21,25 @@ const SignUpForm: React.FC = () => {
 
     const onSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
+
+        const createAsync = async (fields: SignUpUser) => {
+            const res = await createUser(fields);
+            console.log(res);
+            // extend functionality here
+        }
+
         if (password.value !== confirmPwd.value) {
             console.log("passwords don't match");
             resetAll();
             return;
         }
 
-        const params = {
+        createAsync({
             username: username.value,
             email: email.value,
-            password: password.value
-        };
-        createAsync(params);
+            password: password.value,
+        });
+
         resetAll();
     }
 
@@ -79,11 +86,5 @@ const SignUpForm: React.FC = () => {
         </form>
     );
 };
-
-/* *** helper functions *** */
-const createAsync = async (params: SignUpUser) => {
-    const res = await createUser(params)
-    console.log(res);
-}
 
 export default SignUpForm;

@@ -2,6 +2,7 @@ import React from "react";
 import useField from "../../../hooks/useField";
 import Button from "../../Button";
 import Input from "../../Input";
+import { AuthCredentials, authenticateUser } from "../../../services/auth-service";
 import "./style.css";
 
 const LoginForm: React.FC = () => {
@@ -10,9 +11,17 @@ const LoginForm: React.FC = () => {
 
     const onSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
-        /* 
-         * Not implemented yet.
-         * */
+
+        const authAsync = async (cred: AuthCredentials) => {
+            const res = await authenticateUser(cred);
+            console.log(res);
+            // extend functionality here
+        }
+        authAsync({
+            username: username.value,
+            password: password.value
+        });
+
         username.onReset();
         password.onReset();
     }
