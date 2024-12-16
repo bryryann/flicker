@@ -10,5 +10,5 @@ export interface AuthCredentials {
 
 export const authenticateUser = async (credentials: AuthCredentials) => {
     const res = await axios.post(`${config.SERVER_URI}/auth`, credentials);
-    return res.data;
+    return res.data as { token: string; isSigned: boolean; };
 }

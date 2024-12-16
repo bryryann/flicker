@@ -3,9 +3,12 @@ import useField from "../../../hooks/useField";
 import Button from "../../Button";
 import Input from "../../Input";
 import { AuthCredentials, authenticateUser } from "../../../services/auth-service";
+import { useAppDispatch } from "../../../store/store";
+import { setUser } from "../../../store/user-slice";
 import "./style.css";
 
 const LoginForm: React.FC = () => {
+    const dispatch = useAppDispatch();
     const username = useField("text");
     const password = useField("password");
 
@@ -13,9 +16,10 @@ const LoginForm: React.FC = () => {
         e.preventDefault();
 
         const authAsync = async (cred: AuthCredentials) => {
+            // extend onSubmit functionality here
             const res = await authenticateUser(cred);
-            console.log(res);
-            // extend functionality here
+            const user = { ...res, user: cred.username };
+            dispatch(setUser(user));
         }
         authAsync({
             username: username.value,

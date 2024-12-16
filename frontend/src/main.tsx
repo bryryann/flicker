@@ -5,10 +5,15 @@ import store from "./store/store";
 import App from "./App";
 
 const root = createRoot(document.querySelector("#root")!);
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-);
+function renderApp() {
+  root.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>
+  );
+}
+
+store.subscribe(renderApp);
+renderApp();

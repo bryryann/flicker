@@ -23,9 +23,9 @@ const SignUpForm: React.FC = () => {
         e.preventDefault();
 
         const createAsync = async (fields: SignUpUser) => {
+            // extend onSubmit functionality here
             const res = await createUser(fields);
             console.log(res);
-            // extend functionality here
         }
 
         if (password.value !== confirmPwd.value) {
