@@ -12,3 +12,8 @@ export const authenticateUser = async (credentials: AuthCredentials) => {
     const res = await axios.post(`${config.SERVER_URI}/auth`, credentials);
     return res.data as { token: string; isSigned: boolean; };
 }
+
+export const endSession = async () => {
+    const res = await axios.get(`${config.SERVER_URI}/auth/exit`);
+    return res.data;
+}
