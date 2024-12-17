@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AccessPage from "./pages/AccessPage";
 import Dashboard from "./pages/Dashboard";

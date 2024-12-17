@@ -1,4 +1,3 @@
-import React from "react";
 import useField from "../../../hooks/useField";
 import Button from "../../Button";
 import Input from "../../Input";
