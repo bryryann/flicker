@@ -4,14 +4,6 @@ import bcrypt from "bcrypt";
 import config from "../utils/config";
 import { users } from "../db/query";
 
-const testConnection = async (req: Request, res: Response) => {
-    const { username } = req.params;
-    if (await users.exists({ username })) {
-        return res.status(200).send("exists");
-    }
-    res.status(200).send("not exists");
-}
-
 const authenticate = async (req: Request, res: Response): Promise<any> => {
     const { username, password } = req.body;
     if (!username || !password)
@@ -44,7 +36,15 @@ const authenticate = async (req: Request, res: Response): Promise<any> => {
     res.status(200).json({ token, user: username.user, isSigned: true });
 }
 
+const endSession = async (req: Request, res: Response): Promise<any> => {
+    const { USERTOKEN } = req.cookies;
+    if (!USERTOKEN)
+        return res.status(400).json({ error: "No current session" });
+
+    res.clearCookie("USERTOKEN").status(201).json({ message: "Session ended" });
+}
+
 export default {
-    testConnection,
-    authenticate
+    authenticate,
+    endSession
 } satisfies Record<string, Function>;
