@@ -3,8 +3,8 @@ import useField from "../../../hooks/useField";
 import Button from "../../Button";
 import Input from "../../Input";
 import { AuthCredentials, authenticateUser } from "../../../services/auth-service";
-import { useAppDispatch } from "../../../store/store";
-import { setUser } from "../../../store/user-slice";
+import { useAppDispatch } from "../../../redux/store";
+import { setUser } from "../../../redux/user-slice";
 import "./style.css";
 
 const LoginForm: React.FC = () => {

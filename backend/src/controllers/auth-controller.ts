@@ -39,8 +39,7 @@ const authenticate = async (req: Request, res: Response): Promise<any> => {
     res.cookie("USERTOKEN", token, {
         httpOnly: true,
         secure: true,
-        sameSite: "strict",
-        maxAge: 1000 * 60 * 60 * 2
+        sameSite: "strict"
     });
     res.status(200).json({ token, user: username.user, isSigned: true });
 }
