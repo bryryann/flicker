@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AccessPage from "./pages/AccessPage";
-import Dashboard from "./pages/Dashboard";
+import Homepage from "./pages/Homepage";
 import PrivateRoute from "./pages/PrivateRoute";
 import { useAppSelector } from "./redux/store";
 import "./global.css";
@@ -11,7 +11,7 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/app" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/app" element={<PrivateRoute><Homepage /></PrivateRoute>} />
         <Route path="/access" element={<AccessPage />} />
       </Routes>
     </BrowserRouter>
