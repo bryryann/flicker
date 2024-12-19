@@ -10,6 +10,6 @@ export interface SignUpUser {
 axios.defaults.withCredentials = true;
 
 export const createUser = async (user: SignUpUser) => {
-    const res = await axios.post(`${config.SERVER_URI}/users`, user);
+    const res = await axios.post(`${config.SERVER_URL}/users`, user);
     return res.data;
 };
