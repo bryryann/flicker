@@ -3,12 +3,9 @@ import AccessPage from "./pages/AccessPage";
 import Homepage from "./pages/Homepage";
 import PrivateRoute from "./pages/PrivateRoute";
 import OnlyUnauthorized from "./pages/OnlyUnauthorized";
-import { useAppSelector } from "./redux/store";
 import "./global.css";
 
 const App: React.FC = () => {
-  const user = useAppSelector(state => state.user);
-  console.log(user);
   return (
     <BrowserRouter>
       <Routes>
