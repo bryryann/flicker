@@ -1,5 +1,5 @@
 import Navbar from "../../components/Navbar";
-import MovieGrid from "../../components/MovieGrid";
+import TrendingMovies from "../../components/TrendingMovies";
 import Sidebar from "../../components/Sidebar";
 import "./style.css";
 
@@ -10,7 +10,7 @@ const Homepage: React.FC = () => {
             <div className="home-content">
                 <Sidebar />
                 <div className="trending-grid">
-                    <MovieGrid />
+                    <TrendingMovies />
                 </div>
             </div>
         </main>

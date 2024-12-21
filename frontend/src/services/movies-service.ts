@@ -15,7 +15,7 @@ interface ApiData {
 }
 
 // currently unused
-export const trendingMovies = async (): Promise<ApiData> => {
+export const getTrendingMovies = async (): Promise<ApiData> => {
     const res = await axios.get(`/api/trending/movie/day?language=en-US`);
     return res.data as ApiData;
 }
