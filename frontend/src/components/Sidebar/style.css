@@ -1,0 +1,43 @@
+@import "../../global.css";
+
+.main-sidebar {
+    min-height: calc(100vh - 93px);
+    box-shadow: 0 0 7px 4px rgba(0, 0, 0, .3);
+}
+
+.sidebar-anchors {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 20px;
+    left: 25px;
+}
+
+.sidebar-anchors a {
+    opacity: 0.8;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 150ms ease-in;
+
+    &:hover {
+        opacity: 1;
+        transform: translateX(10px);
+    }
+}
+
+.sidebar-profile {
+    margin-top: 60vh;
+    margin-inline: 30px;
+    border-top: 1px solid crimson;
+    padding: 15px;
+}
+
+.sidebar-profile a {
+    opacity: .7;
+    text-decoration: none;
+    padding: 10px 22px;
+
+    &:hover {
+        opacity: 1;
+    }
+}
