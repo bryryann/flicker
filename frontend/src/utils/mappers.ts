@@ -1,33 +1,6 @@
-export interface UnmapedMovieData {
-    adult: boolean;
-    backdrop_path: string;
-    genre_ids: Array<number>;
-    id: number;
-    media_type: string;
-    original_language: string;
-    original_title: string;
-    overview: string;
-    popularity: number;
-    poster_path: string;
-    release_date: string;
-    title: string;
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
-}
+import { UnmapedMovieData, MovieData } from "../types";
 
-export interface MovieData {
-    id: number;
-    genreIds: Array<number>;
-    title: string;
-    posterPath: string;
-    popularity: number;
-    releaseDate: string;
-    voteAverage: number;
-    voteCount: number;
-}
-
-export const mapMovie = (data: UnmapedMovieData): MovieData => (
+export const toMovieData = (data: UnmapedMovieData): MovieData => (
     {
         id: data.id,
         genreIds: data.genre_ids,

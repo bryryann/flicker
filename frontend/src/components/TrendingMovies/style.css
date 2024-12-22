@@ -1,0 +1,16 @@
+@import "../../global.css";
+
+.trending-header {
+    padding-inline: 25px;
+    padding-top: 25px;
+    font-size: 2rem;
+    opacity: .8;
+}
+
+.trending-movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 25px;
+    justify-items: center;
+    row-gap: 15px;
+}
