@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import config from "./utils/config";
 import usersRouter from "./routers/users-router";
 import authRouter from "./routers/auth-router";
+import favoritesRouter from "./routers/favorites-router";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get("/", (_req: Request, res: Response) => { res.json({ "version": "0.0.1" }
 
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
+app.use("/favs", favoritesRouter);
 
 const ssl = {
     key: fs.readFileSync(path.join(__dirname, config.SSL.keyPath)),
