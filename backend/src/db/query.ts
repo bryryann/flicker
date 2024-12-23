@@ -47,6 +47,11 @@ class Query {
         );
     }
 
+    async delete(fields: Record<string, string>): Promise<void> {
+        const keys = getConditions(Object.keys(fields));
+        await client.query(`DELETE FROM ${this.db} WHERE ${keys}`, Object.values(fields));
+    }
+
     async exists(condition: ConditionArray) {
         const query = await this.find(condition);
         return query.length > 0;
@@ -54,3 +59,4 @@ class Query {
 }
 
 export const users = new Query("users");
+export const favorites = new Query("favorites");
