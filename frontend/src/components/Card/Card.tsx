@@ -9,7 +9,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ movie }) => {
-    // console.log(movie);
+    console.log(`${movie.title} ${movie.id}`);
     return (
         <div className="movie-card">
             <div className="poster">

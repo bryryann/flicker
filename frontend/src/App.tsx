@@ -11,12 +11,12 @@ const queryClient = new QueryClient();
 const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/app" element={<PrivateRoute><Homepage /></PrivateRoute>} />
-        <Route path="/access" element={<OnlyUnauthorized><AccessPage /></OnlyUnauthorized>} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/app" element={<PrivateRoute><Homepage /></PrivateRoute>} />
+          <Route path="/access" element={<OnlyUnauthorized><AccessPage /></OnlyUnauthorized>} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   );
 };
