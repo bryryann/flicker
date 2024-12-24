@@ -1,3 +1,5 @@
+@import "../../global.css";
+
 .movie-card {
     display: inline-block;
     max-width: 200px;
@@ -28,10 +30,38 @@
     transition: 500ms ease-in-out;
 }
 
+.favorite-btn {
+    position: absolute;
+    z-index: 9;
+    top: 5px;
+    left: 5px;
+}
+
+.favorite-btn>button {
+    width: 35px;
+    height: 35px;
+    background-color: var(--background-accent);
+    border: 2px solid var(--background-color);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+svg#star-icon {
+    width: 80%;
+    height: 80%;
+    fill: orangered !important;
+}
+
 .rating {
     display: flex;
     gap: 25px;
     align-items: center;
+}
+
+.rating div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .movie-card>p {

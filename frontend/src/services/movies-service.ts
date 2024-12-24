@@ -13,7 +13,6 @@ interface ApiData {
     total_results: number;
 }
 
-// currently unused
 export const getTrendingMovies = async (): Promise<ApiData> => {
     const res = await axios.get(`/api/trending/movie/day?language=en-US`);
     return res.data as ApiData;

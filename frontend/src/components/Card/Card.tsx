@@ -1,5 +1,7 @@
 import { MovieData } from "../../types";
-import { convertApiDate } from "../../utils/helpers";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFire, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import "./style.css";
 
 interface CardProps {
@@ -11,14 +13,22 @@ const Card: React.FC<CardProps> = ({ movie }) => {
     return (
         <div className="movie-card">
             <div className="poster">
+                <div className="favorite-btn">
+                    <button>
+                        <FontAwesomeIcon icon={faStarRegular} id="star-icon" />
+                    </button>
+                </div>
                 <img src={`https://image.tmdb.org/t/p/w400${movie.posterPath}`} />
                 <div className="content">
                     <div className="rating">
-                        <p>{movie.voteAverage === 0 ? "?" : movie.voteAverage.toFixed(1)}</p>
-                        <p>{movie.voteCount}</p>
-                    </div>
-                    <div className="release">
-                        <p>{convertApiDate(movie.releaseDate)}</p>
+                        <div>
+                            <FontAwesomeIcon icon={faFire} />
+                            <p>{movie.voteAverage === 0 ? "?" : movie.voteAverage.toFixed(1)}</p>
+                        </div>
+                        <div>
+                            <FontAwesomeIcon icon={faEye} />
+                            <p>{movie.voteCount}</p>
+                        </div>
                     </div>
                 </div>
             </div>
