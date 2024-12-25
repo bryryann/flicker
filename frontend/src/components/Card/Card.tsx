@@ -1,21 +1,26 @@
 import { MovieData } from "../../types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faFire, faEye, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import "./style.css";
 
 interface CardProps {
-    movie: MovieData
+    movie: MovieData;
+    isFavorite: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ movie }) => {
-    console.log(`${movie.title} ${movie.id}`);
+const Card: React.FC<CardProps> = ({ movie, isFavorite }) => {
+    console.log(`${movie.title} ${movie.id} ${isFavorite}`);
     return (
         <div className="movie-card">
             <div className="poster">
                 <div className="favorite-btn">
                     <button>
-                        <FontAwesomeIcon icon={faStarRegular} id="star-icon" />
+                        {
+                            isFavorite
+                                ? <FontAwesomeIcon icon={faStarSolid} id="star-icon" />
+                                : <FontAwesomeIcon icon={faStarRegular} id="star-icon" />
+                        }
                     </button>
                 </div>
                 <img src={`https://image.tmdb.org/t/p/w400${movie.posterPath}`} />

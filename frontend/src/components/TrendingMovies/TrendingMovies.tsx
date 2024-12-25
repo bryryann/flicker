@@ -3,9 +3,11 @@ import { getTrendingMovies } from "../../services/movies-service";
 import { toMovieData } from "../../utils/mappers";
 import { UnmapedMovieData } from "../../types";
 import Card from "../Card";
+import { useAppSelector } from "../../redux/store";
 import "./style.css";
 
 const TrendingMovies: React.FC = () => {
+    const favorites: number[] = useAppSelector(state => state.favorites);
     const { data, isLoading } = useQuery({
         queryFn: getTrendingMovies,
         queryKey: ["trending"],
@@ -19,7 +21,13 @@ const TrendingMovies: React.FC = () => {
         <>
             <h2 className="trending-header">Trending</h2>
             <div className="trending-movie-grid">
-                {movies?.map(m => <Card key={m.id} movie={m} />)}
+                {movies?.map(m => (
+                    <Card
+                        key={m.id}
+                        movie={m}
+                        isFavorite={favorites.includes(m.id)}
+                    />
+                ))}
             </div>
         </>
     )
