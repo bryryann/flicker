@@ -1,4 +1,7 @@
 import { MovieData } from "../../types";
+import { callFavoriteToggle } from "../../services/user-data-services";
+import { useAppDispatch } from "../../redux/store";
+import { toggleFavorite } from "../../redux/favorites-slice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire, faEye, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
 import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
@@ -10,12 +13,18 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({ movie, isFavorite }) => {
-    console.log(`${movie.title} ${movie.id} ${isFavorite}`);
+    const dispatch = useAppDispatch();
+
+    const handleFavorite = async () => {
+        dispatch(toggleFavorite(movie.id));
+        await callFavoriteToggle(movie.id);
+    }
+
     return (
         <div className="movie-card">
             <div className="poster">
                 <div className="favorite-btn">
-                    <button>
+                    <button onClick={handleFavorite}>
                         {
                             isFavorite
                                 ? <FontAwesomeIcon icon={faStarSolid} id="star-icon" />

@@ -13,10 +13,17 @@ const favoritesSlice = createSlice({
         setFavorites(_state, action: PayloadAction<Favorites>) {
             return action.payload;
         },
+        toggleFavorite(state: number[], action: PayloadAction<number>) {
+            const movieId = action.payload;
+            if (state.includes(movieId))
+                return state.filter(id => id != movieId);
+
+            state.push(movieId);
+        }
     }
 });
 
-export const { setFavorites } = favoritesSlice.actions;
+export const { setFavorites, toggleFavorite } = favoritesSlice.actions;
 
 export const initializeFavorites = () => {
     return async (dispatch: AppDispatchType) => {

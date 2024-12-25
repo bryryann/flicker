@@ -14,11 +14,11 @@ const toggleFavorite = async (req: Request, res: Response): Promise<any> => {
     const query = await favorites.find({ movie_id: movieId, user_id: user.id }, "movie_id");
     if (query.length < 1) {
         await favorites.new({ movie_id: movieId, user_id: user.id });
-        return res.status(204).send();
+        return res.status(204).json();
     }
 
     await favorites.delete({ movie_id: movieId, user_id: user.id });
-    return res.status(204).send();
+    return res.status(204).json();
 }
 
 export default {
