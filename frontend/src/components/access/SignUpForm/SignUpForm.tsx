@@ -10,7 +10,6 @@ const SignUpForm: React.FC = () => {
     const password = useField("password");
     const confirmPwd = useField("password");
 
-    // helper function
     const resetAll = () => {
         username.onReset();
         email.onReset();
@@ -22,11 +21,9 @@ const SignUpForm: React.FC = () => {
         e.preventDefault();
 
         const createAsync = async (fields: SignUpUser) => {
-            // extend onSubmit functionality here
             const res = await createUser(fields);
             console.log(res);
         }
-
         if (password.value !== confirmPwd.value) {
             console.log("passwords don't match");
             resetAll();
@@ -38,7 +35,6 @@ const SignUpForm: React.FC = () => {
             email: email.value,
             password: password.value,
         });
-
         resetAll();
     }
 

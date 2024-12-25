@@ -34,3 +34,5 @@ export type RootState = ReturnType<AppStore["getState"]>;
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>();
 export const useAppSelector = useSelector.withTypes<RootState>();
 
+export type AppDispatchType = Awaited<ReturnType<typeof useAppDispatch>>;
+export type AppSelectorType = Awaited<ReturnType<typeof useAppSelector>>;

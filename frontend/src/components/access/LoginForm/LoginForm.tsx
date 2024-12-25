@@ -1,9 +1,9 @@
 import useField from "../../../hooks/useField";
+import { performLogin } from "../../../redux/actions/loginActions";
 import Button from "../../Button";
 import Input from "../../Input";
-import { AuthCredentials, authenticateUser } from "../../../services/auth-service";
+import { AuthCredentials } from "../../../services/auth-service";
 import { useAppDispatch } from "../../../redux/store";
-import { setUser } from "../../../redux/user-slice";
 import "./style.css";
 
 const LoginForm: React.FC = () => {
@@ -16,15 +16,12 @@ const LoginForm: React.FC = () => {
 
         const authAsync = async (cred: AuthCredentials) => {
             // extend onSubmit functionality here
-            const res = await authenticateUser(cred);
-            const user = { ...res, user: cred.username };
-            dispatch(setUser(user));
+            dispatch(performLogin(cred));
         }
         authAsync({
             username: username.value,
             password: password.value
         });
-
         username.onReset();
         password.onReset();
     }
