@@ -3,6 +3,7 @@ import { getTrendingMovies } from "../../services/movies-service";
 import { toMovieData } from "../../utils/mappers";
 import { UnmapedMovieData } from "../../types";
 import Card from "../Card";
+import Loading from "../Loading";
 import { useAppSelector } from "../../redux/store";
 import "./style.css";
 
@@ -15,7 +16,7 @@ const TrendingMovies: React.FC = () => {
     });
     const movies = data?.results.map(m => toMovieData(m as UnmapedMovieData));
 
-    if (isLoading) return <p>fetching...</p>
+    if (isLoading) return <Loading />
 
     return (
         <>
