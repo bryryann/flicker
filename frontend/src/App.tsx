@@ -5,7 +5,7 @@ import Homepage from "./pages/Homepage";
 import PrivateRoute from "./pages/PrivateRoute";
 import OnlyUnauthorized from "./pages/OnlyUnauthorized";
 import "./global.css";
-import TrendingMovies from "./components/TrendingMovies";
+import MovieGrid from "./components/MovieGrid";
 
 const queryClient = new QueryClient();
 
@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Navigate replace={true} to="/access" />} />
         <Route path="/app" element={<PrivateRoute><Homepage /></PrivateRoute>}>
-          <Route index element={<TrendingMovies />} />
+          <Route index element={<MovieGrid variant="trending" />} />
           <Route path="favorites" element={<p>favorites component here...</p>} />
           <Route path="watchlist" element={<p>watchlist component here...</p>} />
         </Route>

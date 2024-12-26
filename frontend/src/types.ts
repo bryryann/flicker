@@ -1,3 +1,10 @@
+export interface ApiData {
+  page: number,
+  results: Array<object>;
+  total_pages: number;
+  total_results: number;
+}
+
 export interface UnmapedMovieData {
   adult: boolean;
   backdrop_path: string;
