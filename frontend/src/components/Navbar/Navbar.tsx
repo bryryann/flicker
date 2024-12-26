@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
 import { resetUser } from "../../redux/user-slice";
 import { endSession } from "../../services/auth-service";
@@ -21,7 +22,7 @@ const Navbar: React.FC = () => {
     return (
         <nav>
             <div className="navbar-title">
-                <a href="/app" >Flicker</a>
+                <Link to="/app">Flicker</Link>
             </div>
             <div className="profiler">
                 <p>{user.user}</p>

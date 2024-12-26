@@ -1,6 +1,6 @@
 @import "../../global.css";
 
-.trending-grid {
+.outlet-content {
     z-index: 0;
     position: relative;
     display: inline-block;

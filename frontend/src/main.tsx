@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { store, persistor } from "./redux/store";
+import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 const root = createRoot(document.querySelector("#root")!);
@@ -11,7 +12,9 @@ function renderApp() {
     <React.StrictMode>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </PersistGate>
       </Provider>
     </React.StrictMode>

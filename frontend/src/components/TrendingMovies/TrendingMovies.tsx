@@ -19,7 +19,7 @@ const TrendingMovies: React.FC = () => {
     if (isLoading) return <Loading />
 
     return (
-        <>
+        <div className="trending-movies">
             <h2 className="trending-header">Trending</h2>
             <div className="trending-movie-grid">
                 {movies?.map(m => (
@@ -30,7 +30,7 @@ const TrendingMovies: React.FC = () => {
                     />
                 ))}
             </div>
-        </>
+        </div>
     )
 }
 
