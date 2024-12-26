@@ -25,7 +25,6 @@ export interface UnmapedMovieData {
 
 export interface MovieData {
   id: number;
-  genreIds: Array<number>;
   title: string;
   posterPath: string;
   popularity: number;

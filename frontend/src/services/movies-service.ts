@@ -1,6 +1,6 @@
 import axios from "axios"
+import { ApiData, UnmapedMovieData } from "../types";
 import config from "../utils/config"
-import { ApiData } from "../types";
 
 axios.defaults.headers.common = {
     "Authorization": `Bearer ${config.TMDB.API_TOKEN}`,
@@ -12,4 +12,12 @@ export const getTrendingMovies = async (): Promise<ApiData> => {
     return res.data as ApiData;
 }
 
-// https://api.themoviedb.org/3/movie/
+export const getMoviesById = async (idList: number[])
+    : Promise<UnmapedMovieData[]> => {
+    const movieList = [];
+    for (let id of idList) {
+        const res = await axios.get(`/api/movie/${id}?language=en-US`);
+        movieList.push(res.data);
+    }
+    return movieList as UnmapedMovieData[];
+}

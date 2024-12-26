@@ -3,7 +3,6 @@ import { UnmapedMovieData, MovieData } from "../types";
 export const toMovieData = (data: UnmapedMovieData): MovieData => (
     {
         id: data.id,
-        genreIds: data.genre_ids,
         title: data.title,
         posterPath: data.poster_path,
         popularity: data.popularity,
