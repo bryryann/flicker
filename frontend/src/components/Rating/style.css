@@ -1,0 +1,28 @@
+.rating-component {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    margin-left: 15px;
+    width: 80px;
+}
+
+.list-rating {
+    padding: 15px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.list-rating.positive {
+    border-color: lightgreen;
+}
+
+.list-rating.negative {
+    border-color: crimson;
+}
+
+.rating-viewers {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}

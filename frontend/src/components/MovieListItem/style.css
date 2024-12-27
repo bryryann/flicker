@@ -1,0 +1,28 @@
+@import "../../global.css";
+
+.movie-list-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+
+.item-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.item-content img {
+    height: 100%;
+}
+
+.item-data {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+}

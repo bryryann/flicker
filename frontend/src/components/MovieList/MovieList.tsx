@@ -34,7 +34,7 @@ const MovieList: React.FC<MovieListProps> = ({ variant = "favorites" }) => {
         <div className="movie-list">
             {
                 movies?.map((movie) => (
-                    <MovieListItem key={movie.id} data={movie} />
+                    <MovieListItem key={movie.id} movie={movie} />
                 ))
             }
         </div>
