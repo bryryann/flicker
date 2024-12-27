@@ -1,10 +1,11 @@
+import { useQueryClient } from "@tanstack/react-query";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFire, faEye, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
+import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import { MovieData } from "../../types";
 import { callFavoriteToggle } from "../../services/user-data-services";
 import { useAppDispatch } from "../../redux/store";
 import { toggleFavorite } from "../../redux/favorites-slice";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire, faEye, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import "./style.css";
 
 interface CardProps {
@@ -14,10 +15,12 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ movie, isFavorite }) => {
     const dispatch = useAppDispatch();
+    const queryClient = useQueryClient();
 
     const handleFavorite = async () => {
         dispatch(toggleFavorite(movie.id));
         await callFavoriteToggle(movie.id);
+        queryClient.invalidateQueries("favorites" as any);
     }
 
     return (
