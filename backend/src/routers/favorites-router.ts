@@ -7,6 +7,5 @@ const router = Router();
 router.use(auth);
 router.get("/", controller.getFavorites);
 router.get("/:movieId", controller.toggleFavorite);
-//router.post("/", controller.toggleFavorite);
 
 export default router;

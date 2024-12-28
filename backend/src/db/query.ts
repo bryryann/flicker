@@ -60,3 +60,4 @@ class Query {
 
 export const users = new Query("users");
 export const favorites = new Query("favorites");
+export const watchlist = new Query("watchlists");

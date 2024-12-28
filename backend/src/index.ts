@@ -8,6 +8,7 @@ import config from "./utils/config";
 import usersRouter from "./routers/users-router";
 import authRouter from "./routers/auth-router";
 import favoritesRouter from "./routers/favorites-router";
+import watchlistRouter from "./routers/watchlist-router";
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.get("/", (_req: Request, res: Response) => { res.json({ "version": "0.0.1" }
 app.use("/users", usersRouter);
 app.use("/auth", authRouter);
 app.use("/favs", favoritesRouter);
+app.use("/watchlist", watchlistRouter);
 
 const ssl = {
     key: fs.readFileSync(path.join(__dirname, config.SSL.keyPath)),
