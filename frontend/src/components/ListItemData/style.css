@@ -5,6 +5,10 @@
 
     .title {
         font-size: 1.1em;
+        max-height: 2.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .id {

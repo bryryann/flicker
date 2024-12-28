@@ -1,7 +1,15 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFire, faEye, faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
+import {
+    faFire,
+    faEye,
+    faStar as faStarSolid,
+    faBell as faBellSolid,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+    faStar as faStarRegular,
+    faBell as faBellRegular,
+} from "@fortawesome/free-regular-svg-icons";
 import { MovieData } from "../../types";
 import { callFavoriteToggle } from "../../services/user-data-services";
 import { useAppDispatch } from "../../redux/store";
@@ -30,9 +38,12 @@ const Card: React.FC<CardProps> = ({ movie, isFavorite }) => {
                     <button onClick={handleFavorite}>
                         {
                             isFavorite
-                                ? <FontAwesomeIcon icon={faStarSolid} id="star-icon" />
-                                : <FontAwesomeIcon icon={faStarRegular} id="star-icon" />
+                                ? <FontAwesomeIcon icon={faStarSolid} className="icon" />
+                                : <FontAwesomeIcon icon={faStarRegular} className="icon" />
                         }
+                    </button>
+                    <button>
+                        <FontAwesomeIcon icon={faBellRegular} className="icon" />
                     </button>
                 </div>
                 <img src={`https://image.tmdb.org/t/p/w400${movie.posterPath}`} />

@@ -1,7 +1,4 @@
 import { MovieData } from "../../types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar as faStarSolid } from "@fortawesome/free-solid-svg-icons";
-import { faStar as faStarRegular } from "@fortawesome/free-regular-svg-icons";
 import ListItemData from "../ListItemData";
 import Rating from "../Rating";
 import "./style.css";
@@ -25,6 +22,8 @@ const MovieListItem: React.FC<MovieListItemProps> = ({ movie }) => {
                         rating={movie.voteAverage}
                         count={movie.voteCount}
                     />
+                </div>
+                <div className="item-data-btn">
                 </div>
             </div>
         </div>
