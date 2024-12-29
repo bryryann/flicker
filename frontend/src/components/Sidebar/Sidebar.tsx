@@ -5,9 +5,9 @@ const Sidebar: React.FC = () => {
     return (
         <div className="main-sidebar">
             <ul className="sidebar-anchors">
-                <Link to="favorites">Favorites (W.I.P)</Link>
+                <Link to="favorites">Favorites</Link>
                 <br />
-                <Link to="watchlist">Watchlist (W.I.P)</Link>
+                <Link to="watchlist">Watchlist</Link>
                 <br />
             </ul>
             <div className="sidebar-profile">
