@@ -4,6 +4,7 @@ import storage from "redux-persist/lib/storage";
 import { useSelector, useDispatch } from "react-redux";
 import userReducer from "./user-slice";
 import favoritesReducer from "./favorites-slice";
+import watchlistReducer from "./watchlist-slice";
 
 const persistConfig = {
     key: "root",
@@ -12,7 +13,8 @@ const persistConfig = {
 
 const reducers = combineReducers({
     user: userReducer,
-    favorites: favoritesReducer
+    favorites: favoritesReducer,
+    watchlist: watchlistReducer,
 });
 const persistedUserReducer = persistReducer(persistConfig, reducers);
 export const store = configureStore({

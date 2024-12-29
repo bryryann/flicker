@@ -17,8 +17,8 @@ const App: React.FC = () => {
         <Route path="/" element={<Navigate replace={true} to="/access" />} />
         <Route path="/app" element={<PrivateRoute><Homepage /></PrivateRoute>}>
           <Route index element={<MovieGrid variant="trending" />} />
-          <Route path="favorites" element={<MovieList />} />
-          <Route path="watchlist" element={<p>watchlist component here...</p>} />
+          <Route path="favorites" element={<MovieList variant="favorites" />} />
+          <Route path="watchlist" element={<MovieList variant="watchlist" />} />
         </Route>
         <Route path="/access" element={<OnlyUnauthorized><AccessPage /></OnlyUnauthorized>} />
       </Routes>

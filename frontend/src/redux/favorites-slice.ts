@@ -19,8 +19,8 @@ const favoritesSlice = createSlice({
                 return state.filter(id => id != movieId);
 
             state.push(movieId);
-        }
-    }
+        },
+    },
 });
 
 export const { setFavorites, toggleFavorite } = favoritesSlice.actions;

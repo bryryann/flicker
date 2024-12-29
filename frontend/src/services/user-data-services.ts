@@ -11,3 +11,12 @@ export const getFavorites = async (): Promise<number[]> => {
 export const callFavoriteToggle = async (id: number): Promise<void> => {
     await axios.get(`${config.SERVER_URL}/favs/${id}`);
 }
+
+export const getWatchlist = async (): Promise<number[]> => {
+    const res = await axios.get(`${config.SERVER_URL}/watchlist`);
+    return res.data as number[];
+}
+
+export const callWatchlistToggle = async (id: number): Promise<void> => {
+    await axios.get(`${config.SERVER_URL}/watchlist/${id}`);
+}

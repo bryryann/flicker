@@ -11,17 +11,19 @@ import {
     faBell as faBellRegular,
 } from "@fortawesome/free-regular-svg-icons";
 import { MovieData } from "../../types";
-import { callFavoriteToggle } from "../../services/user-data-services";
+import { callFavoriteToggle, callWatchlistToggle } from "../../services/user-data-services";
 import { useAppDispatch } from "../../redux/store";
 import { toggleFavorite } from "../../redux/favorites-slice";
+import { toggleWatchlist } from "../../redux/watchlist-slice";
 import "./style.css";
 
 interface CardProps {
     movie: MovieData;
     isFavorite: boolean;
+    isWatchlist: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ movie, isFavorite }) => {
+const Card: React.FC<CardProps> = ({ movie, isFavorite, isWatchlist }) => {
     const dispatch = useAppDispatch();
     const queryClient = useQueryClient();
 
@@ -31,10 +33,16 @@ const Card: React.FC<CardProps> = ({ movie, isFavorite }) => {
         queryClient.invalidateQueries("favorites" as any);
     }
 
+    const handleWatchlist = async () => {
+        dispatch(toggleWatchlist(movie.id));
+        await callWatchlistToggle(movie.id);
+        queryClient.invalidateQueries("watchlist" as any);
+    }
+
     return (
         <div className="movie-card">
             <div className="poster">
-                <div className="favorite-btn">
+                <div className="card-btn">
                     <button onClick={handleFavorite}>
                         {
                             isFavorite
@@ -42,8 +50,12 @@ const Card: React.FC<CardProps> = ({ movie, isFavorite }) => {
                                 : <FontAwesomeIcon icon={faStarRegular} className="icon" />
                         }
                     </button>
-                    <button>
-                        <FontAwesomeIcon icon={faBellRegular} className="icon" />
+                    <button onClick={handleWatchlist}>
+                        {
+                            isWatchlist
+                                ? <FontAwesomeIcon icon={faBellSolid} className="icon" />
+                                : <FontAwesomeIcon icon={faBellRegular} className="icon" />
+                        }
                     </button>
                 </div>
                 <img src={`https://image.tmdb.org/t/p/w400${movie.posterPath}`} />

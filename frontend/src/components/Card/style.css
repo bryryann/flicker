@@ -30,7 +30,7 @@
     transition: 500ms ease-in-out;
 }
 
-.favorite-btn {
+.card-btn {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@
     left: 5px;
 }
 
-.favorite-btn>button {
+.card-btn>button {
     width: 35px;
     height: 35px;
     background-color: var(--background-accent);
@@ -51,7 +51,7 @@
     opacity: .8;
 }
 
-.favorite-btn>button:hover {
+.card-btn>button:hover {
     opacity: 1;
 }
 
