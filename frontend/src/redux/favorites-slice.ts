@@ -20,10 +20,13 @@ const favoritesSlice = createSlice({
 
             state.push(movieId);
         },
+        resetFavorites(_state, _action: PayloadAction<void>) {
+            return initialState;
+        }
     },
 });
 
-export const { setFavorites, toggleFavorite } = favoritesSlice.actions;
+export const { setFavorites, toggleFavorite, resetFavorites } = favoritesSlice.actions;
 
 export const initializeFavorites = () => {
     return async (dispatch: AppDispatchType) => {

@@ -17,11 +17,14 @@ const watchlistSlice = createSlice({
                 return state.filter(id => id != movieId);
 
             state.push(movieId);
+        },
+        resetWatchlist(_state, _action: PayloadAction<void>) {
+            return initialState;
         }
     },
 });
 
-export const { setWatchlist, toggleWatchlist } = watchlistSlice.actions;
+export const { setWatchlist, toggleWatchlist, resetWatchlist } = watchlistSlice.actions;
 
 export const initializeWatchlist = () => {
     return async (dispatch: AppDispatchType) => {

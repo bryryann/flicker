@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../../redux/store";
-import { resetUser } from "../../redux/user-slice";
 import { endSession } from "../../services/auth-service";
+import { performLogoff } from "../../redux/actions/loginActions";
 import Button from "../Button";
 import "./style.css";
 
@@ -12,8 +12,8 @@ const Navbar: React.FC = () => {
     const handleLogOff = () => {
         const logoff = async () => {
             const msg = await endSession();
+            dispatch(performLogoff());
             console.log(msg);
-            dispatch(resetUser());
         }
 
         logoff();
