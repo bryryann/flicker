@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
+import { useAppSelector } from "../../redux/store";
 import "./style.css"
 
 const Sidebar: React.FC = () => {
+    const { id } = useAppSelector(state => state.user);
     return (
         <div className="main-sidebar">
             <ul className="sidebar-anchors">
@@ -11,7 +13,7 @@ const Sidebar: React.FC = () => {
                 <br />
             </ul>
             <div className="sidebar-profile">
-                <a href="#">My Profile (W.I.P)</a>
+                <Link to={`/user/${id}`}>My Profile(W.I.P)</Link>
             </div>
         </div>
     )

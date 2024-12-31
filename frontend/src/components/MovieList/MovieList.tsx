@@ -14,12 +14,11 @@ interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({ variant }) => {
     const ids = useAppSelector(state => state[variant]); //
-    console.log(ids);
     const { data, isLoading } = useQuery({
         queryFn: () => getMoviesById(ids),
         queryKey: [variant],
         staleTime: 1000 * 60 * 60 * 3
-    })
+    });
 
     if (isLoading) return <Loading />;
 

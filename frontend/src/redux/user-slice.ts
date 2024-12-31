@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface UserState {
     token: string;
+    id?: number;
     user: string;
     isSigned: boolean;
 }

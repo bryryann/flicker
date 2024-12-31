@@ -1,4 +1,4 @@
-import { authenticateUser, endSession, AuthCredentials } from "../../services/auth-service";
+import { authenticateUser, AuthCredentials } from "../../services/auth-service";
 import { AppDispatchType } from "../store";
 import { setUser, resetUser } from "../user-slice";
 import { initializeFavorites, resetFavorites } from "../favorites-slice";
