@@ -33,7 +33,7 @@ const authenticate = async (req: Request, res: Response): Promise<any> => {
         secure: true,
         sameSite: "strict"
     });
-    res.status(200).json({ token, user: username.user, isSigned: true });
+    res.status(200).json({ token, id: user.id, user: username.user, isSigned: true });
 }
 
 const endSession = async (req: Request, res: Response): Promise<any> => {
