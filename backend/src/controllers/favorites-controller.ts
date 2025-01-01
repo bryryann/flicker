@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { favorites } from "../db/query";
+import { movieIdMapper } from "../utils/helpers";
 
 const getFavorites = async (_req: Request, res: Response): Promise<any> => {
     const { user } = res.locals;
     const query = await favorites.find({ user_id: user.id }, "movie_id");
-    const favs: number[] = query.map((q: { movie_id: number }) => q.movie_id);
-    res.status(200).json(favs);
+    res.status(200).json(movieIdMapper(query));
 }
 
 const toggleFavorite = async (req: Request, res: Response): Promise<any> => {

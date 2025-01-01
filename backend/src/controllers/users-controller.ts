@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcrypt";
-import { users } from "../db/query";
+import { users, favorites, watchlist } from "../db/query";
 import config from "../utils/config";
+import { movieIdMapper } from "../utils/helpers";
 
 const getAll = async (_req: Request, res: Response) => {
     const query = await users.queryAll();
@@ -17,7 +18,15 @@ const findById = async (req: Request, res: Response, next: NextFunction): Promis
     if (query.length < 1) {
         return res.status(404).json({ error: "User not found" });
     }
-    res.status(200).json(query.shift());
+
+    const userFavorites = await favorites.find({ user_id: id }, "movie_id");
+    const userWatchlist = await watchlist.find({ user_id: id }, "movie_id");
+
+    res.status(200).json({
+        ...query.shift(),
+        favorites: movieIdMapper(userFavorites),
+        watchlist: movieIdMapper(userWatchlist),
+    });
 };
 
 const findByUsername = async (req: Request, res: Response): Promise<any> => {

@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import { watchlist } from "../db/query";
+import { movieIdMapper } from "../utils/helpers";
 
 const getWatchlist = async (_req: Request, res: Response): Promise<any> => {
     const { user } = res.locals;
     const query = await watchlist.find({ user_id: user.id }, "movie_id");
-    const list: number[] = query.map((q: { movie_id: number }) => q.movie_id);
-    res.status(200).json(list);
+    res.status(200).json(movieIdMapper(query));
 }
 
 const toggleWatchlist = async (req: Request, res: Response): Promise<any> => {
