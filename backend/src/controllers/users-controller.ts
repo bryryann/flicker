@@ -6,7 +6,11 @@ import { movieIdMapper } from "../utils/helpers";
 
 const getAll = async (_req: Request, res: Response) => {
     const query = await users.queryAll();
-    res.status(200).json(query);
+    const data = query.map((q: any) => {
+        const { password_hash: _, ...rest } = q;
+        return rest;
+    });
+    res.status(200).json(data);
 };
 
 const findById = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
@@ -22,8 +26,9 @@ const findById = async (req: Request, res: Response, next: NextFunction): Promis
     const userFavorites = await favorites.find({ user_id: id }, "movie_id");
     const userWatchlist = await watchlist.find({ user_id: id }, "movie_id");
 
+    const { password_hash: _, ...data } = query.shift();
     res.status(200).json({
-        ...query.shift(),
+        ...data,
         favorites: movieIdMapper(userFavorites),
         watchlist: movieIdMapper(userWatchlist),
     });
@@ -35,7 +40,8 @@ const findByUsername = async (req: Request, res: Response): Promise<any> => {
     if (query.length < 1) {
         return res.status(404).json({ error: "User not found" });
     }
-    res.status(200).json(query.shift());
+    const { password_hash: _, ...data } = query.shift();
+    res.status(200).json(...data);
 };
 
 const createUser = async (req: Request, res: Response): Promise<any> => {
