@@ -1,5 +1,11 @@
 @import "../../global.css";
 
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .profile-info {
     opacity: .9;
 
@@ -18,4 +24,22 @@
     font-size: .8rem;
     opacity: .8;
     margin-top: 25px;
+}
+
+.user-movies-info {
+    padding: 15px;
+
+    p {
+        display: flex;
+        width: 180px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 12px;
+    }
+
+    span {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
 }

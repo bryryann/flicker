@@ -34,6 +34,8 @@ const Profile: React.FC = () => {
           id={userData.id}
           username={userData.username}
           creationDate={userData.created_at}
+          favCount={userData.favorites.length}
+          planCount={userData.watchlist.length}
         />
       </div>
     </div>
