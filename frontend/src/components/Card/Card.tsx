@@ -4,11 +4,11 @@ import {
     faFire,
     faEye,
     faStar as faStarSolid,
-    faBell as faBellSolid,
+    faClock as faClockSolid,
 } from "@fortawesome/free-solid-svg-icons";
 import {
     faStar as faStarRegular,
-    faBell as faBellRegular,
+    faClock as faClockRegular,
 } from "@fortawesome/free-regular-svg-icons";
 import { MovieData } from "../../types";
 import { callFavoriteToggle, callWatchlistToggle } from "../../services/user-data-services";
@@ -53,8 +53,8 @@ const Card: React.FC<CardProps> = ({ movie, isFavorite, isWatchlist }) => {
                     <button onClick={handleWatchlist}>
                         {
                             isWatchlist
-                                ? <FontAwesomeIcon icon={faBellSolid} className="icon" />
-                                : <FontAwesomeIcon icon={faBellRegular} className="icon" />
+                                ? <FontAwesomeIcon icon={faClockSolid} className="icon" />
+                                : <FontAwesomeIcon icon={faClockRegular} className="icon" />
                         }
                     </button>
                 </div>
