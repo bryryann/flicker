@@ -1,0 +1,21 @@
+@import "../../global.css";
+
+.profile-info {
+    opacity: .9;
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    >p {
+        color: var(--primary-color);
+    }
+}
+
+.profile-dates {
+    display: flex;
+    flex-direction: column;
+    font-size: .8rem;
+    opacity: .8;
+    margin-top: 25px;
+}

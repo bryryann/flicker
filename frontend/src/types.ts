@@ -33,3 +33,12 @@ export interface MovieData {
   voteCount: number;
 }
 
+export interface UserData {
+  id: number;
+  username: string;
+  email: string;
+  created_at: string;
+  updated_at: string;
+  favorites: number[];
+  watchlist: number[];
+}
