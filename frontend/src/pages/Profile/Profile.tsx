@@ -5,22 +5,29 @@ import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { findUser } from "../../services/users-service";
 import { UserData } from "../../types";
 import Loading from "../../components/Loading";
-import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
+import ProfileHeader from "../../components/ProfileHeader";
+import NotFound from "../../pages/NotFound";
 import "./style.css";
 
 const Profile: React.FC = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState<UserData>();
+  const [notFound, setNotFound] = useState<boolean>(false);
 
   useEffect(() => {
     const findAsync = async (id: string) => {
-      const res = await findUser(id);
-      setUserData(res);
+      try {
+        const res = await findUser(id);
+        setUserData(res);
+      } catch {
+        setNotFound(true);
+      }
     }
     findAsync(userId!);
   }, []);
 
-  if (!userData) return <Loading />
+  if (notFound) return <NotFound />
+  if (userData === undefined) return <Loading />
 
   return (
     <div className="profile-page">
