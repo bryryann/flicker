@@ -3,7 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-regular-svg-icons";
 import { findUser } from "../../services/users-service";
-import { UserData } from "../../types";
+import { UserData, MovieData } from "../../types";
+import { getMoviesById } from "../../services/movies-service";
+import { toMovieData } from "../../utils/mappers";
 import Loading from "../../components/Loading";
 import ProfileHeader from "../../components/ProfileHeader";
 import NotFound from "../../pages/NotFound";
@@ -12,10 +14,12 @@ import "./style.css";
 const Profile: React.FC = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState<UserData>();
+  const [favorites, setFavorites] = useState<MovieData[]>();
+  const [watchlist, setWatchlist] = useState<MovieData[]>();
   const [notFound, setNotFound] = useState<boolean>(false);
 
   useEffect(() => {
-    const findAsync = async (id: string) => {
+    const fetchData = async (id: string) => {
       try {
         const res = await findUser(id);
         setUserData(res);
@@ -23,11 +27,27 @@ const Profile: React.FC = () => {
         setNotFound(true);
       }
     }
-    findAsync(userId!);
-  }, []);
+    fetchData(userId!);
+  }, [userId]);
 
-  if (notFound) return <NotFound />
-  if (userData === undefined) return <Loading />
+  useEffect(() => {
+    if (!userData) return;
+
+    const fetchMovies = async () => {
+      try {
+        const favs = await getMoviesById(userData!.favorites);
+        const wlist = await getMoviesById(userData!.watchlist);
+        setFavorites(favs.map((m) => toMovieData(m)));
+        setWatchlist(wlist.map((m) => toMovieData(m)));
+      } catch {
+        setNotFound(true);
+      }
+    };
+    fetchMovies();
+  }, [userData]);
+
+  if (notFound) return <NotFound />;
+  if (userData === undefined) return <Loading />;
 
   return (
     <div className="profile-page">
