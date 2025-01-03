@@ -8,6 +8,7 @@ import { getMoviesById } from "../../services/movies-service";
 import { toMovieData } from "../../utils/mappers";
 import Loading from "../../components/Loading";
 import ProfileHeader from "../../components/ProfileHeader";
+import MovieSlider from "../../components/MovieSlider";
 import NotFound from "../../pages/NotFound";
 import "./style.css";
 
@@ -64,6 +65,15 @@ const Profile: React.FC = () => {
           favCount={userData.favorites.length}
           planCount={userData.watchlist.length}
         />
+        <div className="profile-slider">
+          <h3>Favorites</h3>
+          { favorites ? <MovieSlider data={favorites} /> : <Loading />}
+          
+        </div>
+        <div className="profile-slider">
+          <h3>Plan-to-Watch</h3>
+          { watchlist ? <MovieSlider data={watchlist} /> : <Loading />}
+        </div>
       </div>
     </div>
   )

@@ -29,3 +29,9 @@
     display: flex;
     flex-direction: column;
 }
+
+.profile-slider h3 {
+    margin-top: 15px;
+    opacity: .8;
+    font-size: 1.2rem;
+}
